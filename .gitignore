@@ -1,6 +1,10 @@
 dist/
 node_modules/
 *.vsix
+*.tgz
+.eslintcache
 .vscode-extension-test/
+.vscode-test/
+.vscode-test-web/
 .vscode-userdata-test/
 .package-restore/

@@ -1,0 +1,16 @@
+.git/**
+.github/**
+.vscode/**
+.vscode-test/**
+.vscode-test-web/**
+src/**
+node_modules/**
+.package-restore/**
+.eslintcache
+eslint.config.mjs
+tsconfig.json
+package-lock.json
+*.tgz
+*.vsix
+.gitignore
+.vscodeignore

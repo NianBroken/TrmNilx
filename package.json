@@ -1,8 +1,8 @@
 {
   "name": "trmnilx",
   "displayName": "TrmNilx",
-  "description": "阻止 VS Code 在启动阶段自动弹出终端。",
-  "version": "1.0.0",
+  "description": "阻止 VSCode 在启动阶段自动弹出终端。",
+  "version": "1.0.1",
   "publisher": "nianbroken",
   "author": "NianBroken",
   "license": "Apache-2.0",
@@ -46,14 +46,6 @@
     "*"
   ],
   "main": "./dist/extension.js",
-  "files": [
-    "dist",
-    "images",
-    "README.md",
-    "CHANGELOG.md",
-    "LICENSE",
-    "package.json"
-  ],
   "contributes": {
     "configuration": {
       "title": "TrmNilx",
@@ -83,10 +75,13 @@
     "watch": "tsc -watch -p ./",
     "lint": "eslint .",
     "prepackage": "npm run compile && npm run lint",
-    "package": "vsce package --allow-star-activation --out trmnilx-1.0.0.vsix",
+    "package": "vsce package --allow-star-activation",
     "package:vsix": "npm run package"
   },
   "overrides": {
+    "@vscode/vsce": {
+      "glob": "^13.0.6"
+    },
     "xmlbuilder": "11.0.0"
   },
   "devDependencies": {
