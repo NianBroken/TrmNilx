@@ -1,0 +1,103 @@
+{
+  "name": "trmnilx",
+  "displayName": "TrmNilx",
+  "description": "阻止 VS Code 在启动阶段自动弹出终端。",
+  "version": "1.0.0",
+  "publisher": "nianbroken",
+  "author": "NianBroken",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "icon": "images/trmnilx.png",
+  "pricing": "Free",
+  "homepage": "https://github.com/NianBroken/TrmNilx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NianBroken/TrmNilx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NianBroken/TrmNilx/issues"
+  },
+  "galleryBanner": {
+    "color": "#0f172a",
+    "theme": "dark"
+  },
+  "markdown": "github",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "terminal",
+    "startup",
+    "panel",
+    "kill",
+    "hide"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "files": [
+    "dist",
+    "images",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "TrmNilx",
+      "properties": {
+        "trmnilx.startupSuppression.totalDurationMs": {
+          "type": "integer",
+          "default": 1500,
+          "minimum": 1,
+          "scope": "window",
+          "order": 1,
+          "markdownDescription": "启动抑制窗口的总时长，单位为毫秒。插件会在这个时间窗口内从启动瞬间开始重复执行终端清理。"
+        },
+        "trmnilx.startupSuppression.repeatIntervalMs": {
+          "type": "integer",
+          "default": 200,
+          "minimum": 1,
+          "scope": "window",
+          "order": 2,
+          "markdownDescription": "启动抑制窗口内的重复执行间隔，单位为毫秒。执行次数按向下取整规则计算。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Test-Path dist) { Remove-Item dist -Recurse -Force }; if (Test-Path *.vsix) { Remove-Item *.vsix -Force }\"",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint .",
+    "prepackage": "npm run compile && npm run lint",
+    "package": "vsce package --allow-star-activation --out trmnilx-1.0.0.vsix",
+    "package:vsix": "npm run package"
+  },
+  "overrides": {
+    "xmlbuilder": "11.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^25.5.2",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
+    "@vscode/vsce": "^3.7.1",
+    "eslint": "^9.39.4",
+    "globals": "^17.4.0",
+    "typescript": "^6.0.2"
+  }
+}

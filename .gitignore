@@ -1,0 +1,6 @@
+dist/
+node_modules/
+*.vsix
+.vscode-extension-test/
+.vscode-userdata-test/
+.package-restore/
